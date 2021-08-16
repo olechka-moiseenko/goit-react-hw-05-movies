@@ -1,38 +1,24 @@
 import { Switch, Route } from "react-router-dom";
-import AppBar from "./components/AppBar/AppBar";
-import Container from "./components/Container/Container";
-import HomeView from "./views/HomeView";
-import AuthorsView from "./views/AuthorsView";
-import BooksView from "./views/BooksView";
-import BookDetailsView from "./views/BookDetailsView";
-import NotFoundView from "./views/NotFoundView";
+import HomePage from "./components/HomePage/HomePage.js";
+import MoviesPage from "./components/MoviesPage/MoviesPage.js";
+import MovieDetailsPage from "./components/MovieDetailsPage/MovieDetailsPage.js";
 
 export default function App() {
   return (
-    <Container>
-      <AppBar />
-
+    <>
       <Switch>
         <Route path="/" exact>
-          <HomeView />
+          <HomePage />
         </Route>
 
-        <Route path="/authors">
-          <AuthorsView />
+        <Route path="/movies" exact>
+          <MoviesPage />
         </Route>
 
-        <Route path="/books" exact>
-          <BooksView />
-        </Route>
-
-        <Route path="/books/:bookId">
-          <BookDetailsView />
-        </Route>
-
-        <Route>
-          <NotFoundView />
+        <Route path="/movies/:moviesId">
+          <MovieDetailsPage />
         </Route>
       </Switch>
-    </Container>
+    </>
   );
 }
