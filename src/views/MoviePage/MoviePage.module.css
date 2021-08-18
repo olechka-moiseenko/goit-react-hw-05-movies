@@ -1,0 +1,57 @@
+.moviePage {
+  display: block;
+}
+.mainInfo {
+  display: flex;
+  justify-content: center;
+}
+.poster {
+  width: 300px;
+  height: 450px;
+}
+.info {
+  margin-left: 20px;
+  width: 800px;
+  text-align: left;
+}
+.addInfo {
+  text-align: left;
+  margin-left: 200px;
+}
+
+.btnGoBack {
+  margin-left: 50%;
+  margin-right: 50px;
+}
+.addItem {
+  text-decoration: none;
+  font-weight: 700;
+}
+
+@import "https://fonts.googleapis.com/css?family=Russo+One";
+
+.btnGoBack {
+  width: 150px;
+  text-transform: uppercase;
+  font-family: "Russo One", sans-serif;
+  font-weight: 900;
+  font-size: 16px;
+  color: white;
+  padding: 10px 10px;
+  margin: 10px 20px;
+  border-radius: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background-image: linear-gradient(
+    to right,
+    #9eefe1 0%,
+    #4830f0 51%,
+    #9eefe1 100%
+  );
+  background-size: 200% auto;
+  border-style: none;
+  transition: 0.5s;
+}
+.btnGoBack:hover {
+  background-position: right center;
+}

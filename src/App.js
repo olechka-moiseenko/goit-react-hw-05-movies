@@ -1,38 +1,34 @@
-import "./App.css";
-import { lazy, Suspense } from "react";
-import React from "react";
-import Navigation from "./components/Navigation/Navigation.js";
-import { Route, Switch, Redirect } from "react-router-dom";
-import MovieDetailsPage from "./components/MovieDetailsPage/MovieDetailsPage.js";
-
-const HomePage = lazy(() => import("./components/HomePage/HomePage.js"));
-const MoviesPage = lazy(() => import("./components/MoviesPage/MoviesPage.js"));
+import { Switch, Route, Redirect } from "react-router-dom";
+import Container from "./components/Container/Container";
+import Navigation from "./components/Navigation/Navigation";
+import Loaderr from "./components/Loader/Loader";
+import React, { lazy, Suspense } from "react";
+const HomePage = lazy(() =>
+  import("./Views/HomePage/HomePage" /* webpackChunkName: "home-page" */)
+);
+const MovieDetailsPage = lazy(() =>
+  import("./Views/MoviesPage/MoviesPage" /* webpackChunkName: "movies-page" */)
+);
+const MoviePage = lazy(() =>
+  import("./Views/MoviePage/MoviePage" /* webpackChunkName: "movie-page" */)
+);
 
 function App() {
   return (
-    <>
-      <header>
+    <div className="App">
+      <Container>
         <Navigation />
-      </header>
-      <hr />
-      <Suspense fallback={<p>loading...</p>}>
-        <Switch>
-          <Route path="/" exact>
-            <HomePage />
-          </Route>
 
-          <Route path="/Movies" exact>
-            <MoviesPage />
-          </Route>
-
-          <Route path="/Movies/:moviesId">
-            <MovieDetailsPage />
-          </Route>
-          <Route>{/* <h1>404 Page not found</h1> */}</Route>
-          <Redirect to="/" />
-        </Switch>
-      </Suspense>
-    </>
+        <Suspense fallback={<Loaderr />}>
+          <Switch>
+            <Route path="/" exact component={HomePage} />
+            <Route path="/movies" exact component={MovieDetailsPage} />
+            <Route path="/movies/:movieId" component={MoviePage} />
+            <Redirect to="/" />
+          </Switch>
+        </Suspense>
+      </Container>
+    </div>
   );
 }
 
