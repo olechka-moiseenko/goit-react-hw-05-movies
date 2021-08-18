@@ -1,7 +1,7 @@
 import { useState, useEffect, Fragment } from "react";
 import { Route, useParams, useHistory, useLocation } from "react-router-dom";
 import { Link, useRouteMatch } from "react-router-dom";
-import { fetchMovieById } from "../../services/themoviedb-api";
+import { fetchMovieById } from "../../services/movies-api.js";
 import { Cast } from "../Cast/Cast";
 import { Review } from "../Review/Review";
 import s from "./MoviePage.module.css";
@@ -93,3 +93,4 @@ const MoviePage = () => {
     </Fragment>
   );
 };
+export default MoviePage;

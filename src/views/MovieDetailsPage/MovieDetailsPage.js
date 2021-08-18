@@ -1,7 +1,7 @@
 import { useHistory, useLocation } from "react-router-dom";
 import SearchMovies from "../../views/SearchMovies/SearchMovies";
 import List from "../List/List";
-import { fetchSearchMovies } from "../../services/themoviedb-api";
+import { fetchSearchMovies } from "../../services/movies-api.js";
 import { useState, useEffect } from "react";
 
 function MovieDetailsPage() {

@@ -3,14 +3,17 @@ import Container from "./components/Container/Container";
 import Navigation from "./components/Navigation/Navigation";
 import Loaderr from "./components/Loader/Loader";
 import React, { lazy, Suspense } from "react";
+
 const HomePage = lazy(() =>
-  import("./Views/HomePage/HomePage" /* webpackChunkName: "home-page" */)
+  import("./views/HomePage/HomePage" /* webpackChunkName: "home-page" */)
 );
 const MovieDetailsPage = lazy(() =>
-  import("./Views/MoviesPage/MoviesPage" /* webpackChunkName: "movies-page" */)
+  import(
+    "./views/MovieDetailsPage/MovieDetailsPage" /* webpackChunkName: "movies-page" */
+  )
 );
 const MoviePage = lazy(() =>
-  import("./Views/MoviePage/MoviePage" /* webpackChunkName: "movie-page" */)
+  import("./views/MoviePage/MoviePage" /* webpackChunkName: "movie-page" */)
 );
 
 function App() {
