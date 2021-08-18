@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import s from "./HomePage.module.css";
 import * as api from "../../services/movies-api";
@@ -8,7 +8,7 @@ export default function HomePage() {
   const [movies, setMovies] = useState();
 
   useEffect(() => {
-    api.fetchPopularMovies().then(setMovies);
+    api.getPopularMovies().then((moviesArr) => setMovies(moviesArr));
   }, []);
 
   return (

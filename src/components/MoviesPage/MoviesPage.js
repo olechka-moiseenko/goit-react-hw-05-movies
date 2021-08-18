@@ -13,13 +13,13 @@ export default function MoviesPage() {
 
   useEffect(() => {
     if (submitValue !== "") {
-      api.fetchMovieInSearch(submitValue).then((res) => setFilm(res));
+      api.fetchMoviesSearch(submitValue).then((res) => setFilm(res));
     }
   }, [submitValue]);
 
   useEffect(() => {
     if (query !== null && query !== submitValue) {
-      api.fetchMovieInSearch(query).then((res) => setFilm(res));
+      api.fetchMoviesSearch(query).then((res) => setFilm(res));
     }
     // eslint-disable-next-line
   }, [query]);

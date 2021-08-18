@@ -1,15 +1,15 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
-import defaultImg from "../../imagesDef/default-img.jpg";
-import * as api from "../../services/movies-api";
+import defaultImg from "../../defaultImg/defaultImg.jpg";
+import * as api from "../../services/movies-api.js";
 
 const Casts = () => {
   const { movieId } = useParams();
   const imgBasePath = "https://image.tmdb.org/t/p/w500";
   const [movieIdObj, setmovieIdObj] = useState();
   useEffect(() => {
-    api.fetchMovieCast(movieId).then((res) => setmovieIdObj(res));
+    api.fetcCastsId(movieId).then((res) => setmovieIdObj(res));
   }, [movieId]);
 
   // console.log(movieIdObj)

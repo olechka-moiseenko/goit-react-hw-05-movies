@@ -5,78 +5,55 @@ const AUTH_TOKEN =
 axios.defaults.baseURL = "https://api.themoviedb.org/3";
 axios.defaults.headers.common.Authorization = AUTH_TOKEN;
 
-export async function fetchPopularMovies() {
+export async function fetcReviews(movieId) {
   try {
     const response = await axios.get(
-      `/trending/movie/day?api_key=${AUTH_TOKEN}`
+      `/movie/${movieId}/reviews?api_key=AUTH_TOKEN&language=en-US`
     );
-    console.log("result :>>", response.data.results);
     return response.data.results;
   } catch (error) {
-    alert(error.message);
+    alert(error.massage);
   }
 }
 
-export async function fetchMovieInSearch(movieName) {
+export async function fetcCastsId(movieId) {
   try {
     const response = await axios.get(
-      `/search/movie?api_key=${AUTH_TOKEN}&query=${movieName}`
-    );
-    console.log("result :>>", response.data.results);
-    return response.data.results;
-  } catch (error) {
-    alert(error.message);
-  }
-}
-
-export async function fetchMovieInfo(movieId) {
-  try {
-    const response = await axios.get(`/movie/${movieId}?api_key=${AUTH_TOKEN}`);
-    return response.data;
-  } catch (error) {
-    alert(error.message);
-  }
-}
-
-export async function fetchMovieCast(movieId) {
-  try {
-    const response = await axios.get(
-      `/movie/${movieId}/credits?api_key=${AUTH_TOKEN}`
+      `/movie/${movieId}/credits?api_key=AUTH_TOKEN&language=en-US`
     );
     return response.data.cast;
   } catch (error) {
-    alert(error.message);
+    alert(error.massage);
   }
 }
 
-export async function fetchMovieRewiews(movieId) {
+export async function fetchMoviesId(movieId) {
   try {
     const response = await axios.get(
-      `/movie/${movieId}/reviews?api_key=${AUTH_TOKEN}`
+      `/movie/${movieId}?api_key=AUTH_TOKEN&language=en-US`
+    );
+    return response.data;
+  } catch (error) {
+    alert(error.massage);
+  }
+}
+
+export async function getPopularMovies() {
+  try {
+    const response = await axios.get(`/trending/movie/day?`);
+    return response.data.results;
+  } catch (error) {
+    alert(error.massage);
+  }
+}
+
+export async function fetchMoviesSearch(submitValue) {
+  try {
+    const response = await axios.get(
+      `/search/movie?api_key=AUTH_TOKEN&language=en-US&query=${submitValue}&page=1&include_adult=false`
     );
     return response.data.results;
   } catch (error) {
-    alert(error.message);
+    alert(error.massage);
   }
-}
-
-const BASE_URL = "http://localhost:4040";
-
-async function fetchWithErrorHandling(url = "", config = {}) {
-  const response = await fetch(url, config);
-  return response.ok
-    ? await response.json()
-    : Promise.reject(new Error("Not found"));
-}
-
-export function fetchAuthors() {
-  return fetchWithErrorHandling(`${BASE_URL}/authors?_embed=books`);
-}
-
-export function fetchBooks() {
-  return fetchWithErrorHandling(`${BASE_URL}/books`);
-}
-
-export function fetchBookById(bookId) {
-  return fetchWithErrorHandling(`${BASE_URL}/books/${bookId}?_expand=author`);
 }

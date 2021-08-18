@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import * as api from "../../api/api";
+import * as api from "../../services/movies-api.js";
 
 const Reviews = () => {
   const { movieId } = useParams();
-  // const imgBasePath = 'https://image.tmdb.org/t/p/w500'
   const [movieIdObj, setmovieIdObj] = useState([]);
   useEffect(() => {
     api.fetcReviews(movieId).then((res) => setmovieIdObj(res));
   }, [movieId]);
 
-  //   console.log(movieIdObj)
   return (
     <>
       {movieIdObj.length !== 0 ? (
