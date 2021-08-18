@@ -1,10 +1,16 @@
-.link {
+.navLinks {
   font-size: 30px;
   color: white;
   outline: none;
   text-decoration: none;
 }
+.activLink {
+  color: rgb(20, 219, 20);
+}
+.list {
+  display: flex;
+}
 
-.activeLink {
-  color: #2196f3;
+.navLinks:not(:last-child) {
+  margin-right: 30px;
 }

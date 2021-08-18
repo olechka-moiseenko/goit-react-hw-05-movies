@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import s from "./MoviesPage.module.css";
-import * as api from "../../services/movies-api";
+import * as api from "../../services/movies-api.js";
 
 export default function MoviesPage() {
   const location = useLocation();
@@ -27,7 +27,7 @@ export default function MoviesPage() {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     setSubmitValue(evt.target.elements.inputName.value);
-    // history.push(`/Movies/?query=${ evt.target.elements.inputName.value }`)
+    history.push(`/Movies/?query=${evt.target.elements.inputName.value}`);
     history.push({
       pathname: location.pathname,
       search: `?query=${evt.target.elements.inputName.value}`,

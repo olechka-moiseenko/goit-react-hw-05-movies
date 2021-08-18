@@ -9,8 +9,6 @@ import {
   useLocation,
 } from "react-router-dom";
 import s from "./MovieDetailsPage.module.css";
-// import Casts from '../Cast/Cast';
-// import Reviews from '../Reviews/Reviews';
 import noPoster from "../../defaultImg/noposter.png";
 import * as api from "../../services/movies-api.js";
 
